@@ -6,18 +6,17 @@ Simple lightweight (< 50 Kb) implementation of SLF4J API. Easy but powerful
 configuration via properties file and some additional helpful logging methods.
 Easy analogue of popular log4j library.
 
+In addition can write logs to multiple destinations:
+
+- LogCat
+- System.out
+- ... more to follow
+
 __Android SDK Version__: API 7 [ Android 2.1 ]
 
 __Code Samples__: [[here]](https://github.com/noveogroup/android-logger/tree/sample)
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--logger-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1052)
-
-Downloads
----------
-
- - [android-logger-1.3.5.jar](http://search.maven.org/remotecontent?filepath=com/noveogroup/android/android-logger/1.3.5/android-logger-1.3.5.jar)
- - [android-logger-1.3.5-sources.jar](http://search.maven.org/remotecontent?filepath=com/noveogroup/android/android-logger/1.3.5/android-logger-1.3.5-sources.jar)
- - [android-logger-1.3.5-javadoc.jar](http://search.maven.org/remotecontent?filepath=com/noveogroup/android/android-logger/1.3.5/android-logger-1.3.5-javadoc.jar)
 
 Maven Dependency
 ----------------
@@ -32,7 +31,7 @@ Maven Dependency
 Gradle Dependency
 -----------------
 ```groovy
-'com.noveogroup.android:android-logger:1.3.5'
+'com.noveogroup.android:android-logger-multi:1.4.0-multi'
 ```
 
 Getting Started

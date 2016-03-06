@@ -28,6 +28,8 @@ package com.noveogroup.android.log;
 
 import android.util.Log;
 
+import com.noveogroup.android.log.destinations.Destination;
+
 import java.text.SimpleDateFormat;
 import java.util.Formatter;
 
@@ -260,6 +262,7 @@ public class PatternHandler implements Handler {
     private final String messagePattern;
     private final Pattern compiledTagPattern;
     private final Pattern compiledMessagePattern;
+    private final Destination destination;
 
     /**
      * Creates new {@link PatternHandler}.
@@ -269,6 +272,23 @@ public class PatternHandler implements Handler {
      * @param messagePattern the message pattern.
      */
     public PatternHandler(Logger.Level level, String tagPattern, String messagePattern) {
+        this.destination = Destination.getDefault();
+        this.level = level;
+        this.tagPattern = tagPattern;
+        this.compiledTagPattern = Pattern.compile(tagPattern);
+        this.messagePattern = messagePattern;
+        this.compiledMessagePattern = Pattern.compile(messagePattern);
+    }
+
+    /**
+     * Creates new {@link PatternHandler}.
+     *
+     * @param level          the level.
+     * @param tagPattern     the tag pattern.
+     * @param messagePattern the message pattern.
+     */
+    public PatternHandler(Destination destination, Logger.Level level, String tagPattern, String messagePattern) {
+        this.destination = destination;
         this.level = level;
         this.tagPattern = tagPattern;
         this.compiledTagPattern = Pattern.compile(tagPattern);
@@ -318,13 +338,13 @@ public class PatternHandler implements Handler {
                 if (throwable == null) {
                     messageBody = "";
                 } else {
-                    messageBody = Log.getStackTraceString(throwable);
+                    messageBody = destination.getStackTraceString(throwable);
                 }
             } else {
                 if (throwable == null) {
                     messageBody = message;
                 } else {
-                    messageBody = message + '\n' + Log.getStackTraceString(throwable);
+                    messageBody = message + '\n' + destination.getStackTraceString(throwable);
                 }
             }
 
@@ -340,7 +360,7 @@ public class PatternHandler implements Handler {
             if (messageHead.length() > 0 && !Character.isWhitespace(messageHead.charAt(0))) {
                 messageHead = messageHead + " ";
             }
-            Log.println(level.intValue(), tag, messageHead + messageBody);
+            destination.println(level, tag, messageHead + messageBody);
         }
     }
 

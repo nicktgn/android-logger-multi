@@ -12,3 +12,5 @@
 # Maven
 target
 pom.xml.*
+
+local.properties

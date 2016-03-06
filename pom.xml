@@ -9,17 +9,28 @@
         <version>7</version>
     </parent>
 
+    <distributionManagement>
+        <repository>
+            <id>bintray-nicktgn-maven</id>
+            <url>https://api.bintray.com/maven/nicktgn/maven/android-logger-multi/;publish=1</url>
+        </repository>
+    </distributionManagement>
+
     <groupId>com.noveogroup.android</groupId>
-    <artifactId>android-logger</artifactId>
-    <version>1.3.7-SNAPSHOT</version>
+    <artifactId>android-logger-multi</artifactId>
+    <version>1.4.0-multi</version>
     <packaging>jar</packaging>
 
-    <name>Android Logger</name>
+    <name>Android Logger Multi</name>
     <description>
         Useful logger for Android based on standard android.util.Log class.
         Simple lightweight (&lt; 50 Kb) implementation of SLF4J API. Easy but powerful
         configuration via properties file and some additional helpful logging methods.
         Easy analogue of popular log4j library.
+        In addition can write logs to multiple destinations:
+           - LogCat
+           - System.out
+           - ...
     </description>
     <url>http://noveogroup.github.com/android-logger/</url>
     <licenses>
